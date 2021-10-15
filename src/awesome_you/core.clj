@@ -1,7 +1,6 @@
 (ns awesome-you.core
   (:require [awesome-you.routes :as routes]
-            [compojure.api.sweet :refer [api]]
-            [integrant.core :as ig]))
+            [compojure.api.sweet :refer [api]]))
 
 (def swagger-config
   {:ui   "/"

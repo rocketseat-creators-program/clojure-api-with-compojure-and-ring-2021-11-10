@@ -10,9 +10,14 @@
 (def api-routes
   (context "/api" []
     :tags ["api"]
-    (POST "/achievements" []
+    (POST "/achievements" {db :db}
       :return out.achievement/Achievement
       :body [achievement in.achievement/Achievement]
       :responses {201 {:schema out.achievement/Achievement}}
       :summary "Adds a new achievement"
-      (handle/new-achievement! achievement))))
+      (handle/new-achievement! achievement db))
+    (GET "/achievements/:id" {db :db :as request}
+      :return out.achievement/Achievement
+      :summary "Returns achievement with id"
+      :path-params [id :- s/Uuid]
+     (handle/get-achievement id db))))
