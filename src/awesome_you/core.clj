@@ -1,5 +1,6 @@
 (ns awesome-you.core
   (:require [awesome-you.handlers :as handlers]
+            [awesome-you.middlewares :as middlewares]
             [compojure.api.sweet :refer [api]]))
 
 (def swagger-config
@@ -11,16 +12,11 @@
 
 (defonce in-memory-db (atom {:achievements {}}))
 
-(defn with-db
-  [handler db]
-  (fn [request]
-    (handler (assoc request :db db))))
-
 (def app-config
   {:swagger swagger-config})
 
 (def app
-  (with-db
+  (middlewares/with-db
     (api app-config handlers/api-routes)
     in-memory-db))
 
