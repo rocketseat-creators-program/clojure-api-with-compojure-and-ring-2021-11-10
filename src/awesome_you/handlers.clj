@@ -4,7 +4,7 @@
             [awesome-you.adapters.achievement :as a.achievement]
             [awesome-you.controllers.achievement :as c.achievement]
             [awesome-you.handlers :as handle]
-            [compojure.api.sweet :refer [GET POST PUT context]]
+            [compojure.api.sweet :refer [GET POST PUT DELETE context]]
             [ring.util.http-response :refer [ok created not-found]]
             [schema.core :as s])
   (:import java.time.LocalDate))
@@ -44,6 +44,13 @@
     (ok (a.achievement/from-internal achievement))
     (not-found)))
 
+(s/defn delete-achievement!
+  [id :- s/Uuid
+   db :- s/Any]
+  (if-let [achievement (c.achievement/delete! id db)]
+    (ok (a.achievement/from-internal achievement))
+    (not-found)))
+
 (def api-routes
   (context "/api" []
     (POST "/achievements" {db :db}
@@ -61,4 +68,9 @@
       :body [achievement in.achievement/Achievement]
       :path-params [id :- s/Uuid]
       :summary "Updates achievement with id"
-      (update-achievement! achievement db))))
+      (update-achievement! achievement db))
+    (DELETE "/achievements/:id" {db :db}
+      :return out.achievement/Achievement
+      :path-params [id :- s/Uuid]
+      :summary "Removes achievement with id"
+      (delete-achievement! id db))))

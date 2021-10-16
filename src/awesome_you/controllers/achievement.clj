@@ -21,3 +21,10 @@
    db :- s/Any]
   (when (db.achievement/one (:achievement/id achievement) db)
    (db.achievement/upsert! achievement db)))
+
+(s/defn delete! :- (s/maybe m.achievement/Achievement)
+  [id :- s/Uuid
+   db :- s/Any]
+  (when-let [achievement (db.achievement/one id db)]
+    (and (db.achievement/delete! id db)
+         achievement)))
