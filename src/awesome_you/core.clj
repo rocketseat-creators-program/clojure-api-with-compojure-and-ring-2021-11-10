@@ -1,5 +1,5 @@
 (ns awesome-you.core
-  (:require [awesome-you.routes :as routes]
+  (:require [awesome-you.handlers :as handlers]
             [compojure.api.sweet :refer [api]]))
 
 (def swagger-config
@@ -21,7 +21,7 @@
 
 (def app
   (with-db
-    (api app-config routes/api-routes)
+    (api app-config handlers/api-routes)
     in-memory-db))
 
 (comment

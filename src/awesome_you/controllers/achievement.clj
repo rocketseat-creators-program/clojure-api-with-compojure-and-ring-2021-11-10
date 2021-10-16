@@ -15,3 +15,9 @@
   [id :- s/Uuid
    db :- s/Any]
   (db.achievement/one id db))
+
+(s/defn update! :- (s/maybe m.achievement/Achievement)
+  [achievement :- m.achievement/Achievement
+   db :- s/Any]
+  (when (db.achievement/one (:achievement/id achievement) db)
+   (db.achievement/upsert! achievement db)))

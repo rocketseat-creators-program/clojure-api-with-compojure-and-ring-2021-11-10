@@ -4,8 +4,15 @@
             [schema.core :as s]))
 
 (s/defn to-new-internal :- m.achievement/New
-  [{:keys [title description date]} :- in.achievement/Achievement]
-  {:achievement/title       title
+  [{:keys [title description date]} :- in.achievement/New]
+  (conj {:achievement/title       title
+         :achievement/description description}
+        (when date {:achievement/date date})))
+
+(s/defn to-internal :- m.achievement/Achievement
+  [{:keys [id title description date]} :- in.achievement/Achievement]
+  {:achievement/id          id
+   :achievement/title       title
    :achievement/description description
    :achievement/date        date})
 
