@@ -1,11 +1,11 @@
-# awesome-you
-![image](https://user-images.githubusercontent.com/11655576/137591520-1d823805-bd70-42b9-8ea9-0752f43f083a.png)
 
 <img src="https://storage.googleapis.com/golden-wind/experts-club/capa-github.svg" />
 
 # Web API clojure com Ring e compojure
 
 Nesse vídeo vamos explorar a ideia de que nunca lembramos de nossas conquista quando precisamos e fazer uma Web API em clojure para gerenciar nossas conquistas. Usaremos Ring e Compojure aproveitando os conceitos de arquitetura exagonal para organizar nosso projeto.
+
+![image](https://user-images.githubusercontent.com/11655576/137591520-1d823805-bd70-42b9-8ea9-0752f43f083a.png)
 
 ## Expert
 
