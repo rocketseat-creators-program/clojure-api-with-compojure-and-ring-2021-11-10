@@ -12,8 +12,10 @@
 (s/defn delete! :- m.achievement/Achievement
   [id :- s/Uuid
    db :- clojure.lang.Atom]
-  (-> db
-      (swap! (fn[m] (update m :achievements #(dissoc % id))))))
+  (let [achievement (one id db)]
+    (-> db
+        (swap! (fn[m] (update m :achievements #(dissoc % id)))))
+    achievement))
 
 (s/defn one :- (s/maybe m.achievement/Achievement)
   [id :- s/Uuid
