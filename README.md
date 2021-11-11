@@ -1,11 +1,18 @@
 
 <img src="https://storage.googleapis.com/golden-wind/experts-club/capa-github.svg" />
 
-# Web API clojure com Ring e compojure
+# Aplicando o padrão ports and adapter em uma API clojure com Ring e Compojure API
 
-Nesse vídeo vamos explorar a ideia de que nunca lembramos de nossas conquista quando precisamos e fazer uma Web API em clojure para gerenciar nossas conquistas. Usaremos Ring e Compojure aproveitando os conceitos de arquitetura exagonal para organizar nosso projeto.
+Nessa aula vamos fazer do zero uma web api em clojure usando ring e compojure-api, aplicando o padrão ports and adapters
 
-![image](https://user-images.githubusercontent.com/11655576/137591520-1d823805-bd70-42b9-8ea9-0752f43f083a.png)
+## Preparando o ambiente
+
+Guia completinho de como instalar e configurar Clojure e Leiningen em diferentes sistemas operacionais:
+https://purelyfunctional.tv/guide/how-to-install-clojure/#windows
+
+## Resultado final
+
+![image](https://user-images.githubusercontent.com/11655576/141221014-d09a7148-7a6e-41b7-ab03-8dc63bded76c.png)
 
 ## Expert
 
@@ -13,23 +20,3 @@ Nesse vídeo vamos explorar a ideia de que nunca lembramos de nossas conquista q
 | :-: |
 |[gabipilegi](https://github.com/gabipilegi)|
 
-## Usage
-
-### Run the application locally
-
-`lein ring server`
-
-### Packaging and running as standalone jar
-
-```
-lein do clean, ring uberjar
-java -jar target/server.jar
-```
-
-### Packaging as war
-
-`lein ring uberwar`
-
-## License
-
-Copyright ©  FIXME
